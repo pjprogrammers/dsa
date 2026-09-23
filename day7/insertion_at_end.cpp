@@ -1,4 +1,4 @@
-// Linked List , Insertion At Beginning
+// Linked List , Insertion At The End
 #include <iostream>
 using namespace std;
 
@@ -34,20 +34,24 @@ int main(){
     cout << endl;
 
     // we are doing insertion from this point onwards
-    Node* fourth = create(5); // this is the node we want to insert , lets say at beginning.
+    Node* fourth = create(5); // this is the node we want to insert , lets say at the end.
     // so currently it is head -> 10 -> 20 -> 30 -> null
-    fourth->next = head; // this makes it so the fourth node's next node is head making it basically start from fourth.
-    head = fourth; // this makes head = fourth meaning now the node that fourth was pointing to is our head node now
-                   // and the node fourth was poiting to contains the next node address which is the node containing data(10) which was our old head
+    temp = head;
+    while ( temp->next != nullptr ) {
+        temp = temp->next;
+    }
+    temp->next = fourth;
 
     // now traversing to see if insertion worked.
     temp = head; // a temporary pointer variable which starts with our first node. , reseted it to head as its value became zero because of previous while loop
     cout << "Our Linked List After Insertion : ";
-    while (temp != nullptr) {
+    while (temp->next != nullptr) {
         cout << temp->data << " ";
         temp = temp->next;
     }
-    cout << endl << "This Was An Example Of Insertion In Linked List At Beginning." << endl ;
+    cout << temp->data ;
+    
+    cout << endl << "This Was An Example Of Insertion In Linked List At The End." << endl ;
 }
 
 
